@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useDesign } from "../contexts/DesignContext";
 import { Menu, X } from "lucide-react";
 
@@ -60,10 +60,11 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
-          <Link href={`/design${designNumber}`}>
-            <a className="text-2xl font-playfair font-bold tracking-tight">
+          <div className="brand-logo">
+            <Link href={`/design${designNumber}`}>
               <motion.span
                 key={brandName}
+                className="text-2xl font-playfair font-bold tracking-tight cursor-pointer"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -71,8 +72,8 @@ const Navbar = () => {
               >
                 {brandName}
               </motion.span>
-            </a>
-          </Link>
+            </Link>
+          </div>
         </div>
         
         {/* Desktop Navigation */}
