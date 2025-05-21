@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { fashionImages } from "../../lib/imageData";
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -71,8 +72,8 @@ const About = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.8 }}
-                src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000" 
-                alt="Luxurious boutique interior" 
+                src={fashionImages.design1.about.image} 
+                alt="Fashion designer at work" 
                 className="w-full h-full object-cover parallax-layer" 
                 data-depth="0.1" 
               />

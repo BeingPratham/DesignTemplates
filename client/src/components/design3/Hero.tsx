@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { fashionImages } from "../../lib/imageData";
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -19,8 +20,8 @@ const Hero = () => {
         className="absolute inset-0 z-0"
       >
         <img 
-          src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&h=1080" 
-          alt="Luxury interior" 
+          src={fashionImages.design3.hero.main} 
+          alt="Luxury fashion collection" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--luxury-black))] via-transparent to-[hsl(var(--luxury-black))/80]"></div>
@@ -97,8 +98,8 @@ const Hero = () => {
             >
               <div className="border-4 border-[hsl(var(--design3-accent))] p-4 -rotate-3 transform">
                 <img 
-                  src="https://images.unsplash.com/photo-1524324463413-57e3d8392091?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000" 
-                  alt="Luxury item" 
+                  src={fashionImages.design3.hero.secondary} 
+                  alt="Luxury fashion piece" 
                   className="w-full h-auto rotate-3 transform shadow-2xl"
                 />
               </div>

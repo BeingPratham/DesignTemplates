@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ThreeScene from "../ThreeModel";
+import { fashionImages } from "../../lib/imageData";
 
 const Hero = () => {
   const heroRef = useRef(null);
   const isInView = useInView(heroRef, { once: true });
 
-  // Image and text animation variants
+  // Image and text animation variants with fixed easing
   const imageVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: { 
@@ -14,7 +15,7 @@ const Hero = () => {
       scale: 1,
       transition: { 
         duration: 1.2,
-        ease: [0.6, 0.01, -0.05, 0.95]
+        ease: "easeOut"
       }
     }
   };
@@ -162,18 +163,25 @@ const Hero = () => {
             <div className="relative rounded-lg overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--design2-accent))/30] to-transparent z-10" />
               <img
-                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                alt="Luxury sustainable fashion"
+                src={fashionImages.design2.hero.main}
+                alt="Artisanal bohemian fashion"
                 className="w-full h-auto"
               />
             </div>
             
-            <div className="absolute -bottom-16 -left-16 w-32 h-32">
-              <ThreeScene 
-                backgroundColor="transparent"
-                className="w-full h-full"
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, duration: 1 }}
+              className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full border-2 border-[hsl(var(--design2-accent))] parallax-layer overflow-hidden"
+              data-depth="0.4"
+            >
+              <img 
+                src={fashionImages.design2.hero.secondary} 
+                alt="Artisanal design detail" 
+                className="w-full h-full object-cover rounded-full"
               />
-            </div>
+            </motion.div>
             
             <motion.div
               initial={{ opacity: 0, y: 40 }}

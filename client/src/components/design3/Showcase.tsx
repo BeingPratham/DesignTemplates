@@ -1,31 +1,35 @@
 import React, { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft } from "lucide-react";
+import { fashionImages } from "../../lib/imageData";
+
+// Get collection data from our fashion image library
+const collectionData = fashionImages.design3.showcase;
 
 const products = [
   {
     id: 1,
-    title: "Vintage Elegance",
-    description: "Heritage designs reimagined with contemporary materials.",
-    image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    title: "Heritage Collection",
+    description: "Timeless pieces crafted with traditional techniques.",
+    image: collectionData[0].image
   },
   {
     id: 2,
-    title: "Art Deco Revival",
-    description: "Bold geometrical patterns celebrating the golden age of design.",
-    image: "https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    title: "Parisian Edit",
+    description: "Elegant silhouettes inspired by French couture.",
+    image: collectionData[1].image
   },
   {
     id: 3,
-    title: "Modern Classic",
-    description: "Timeless silhouettes with a contemporary twist.",
-    image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    title: "Seasonal Staples",
+    description: "Essential pieces for the sophisticated wardrobe.",
+    image: collectionData[2].image
   },
   {
     id: 4,
-    title: "Parisian Couture",
-    description: "Exquisite craftsmanship inspired by haute couture traditions.",
-    image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    title: "Evening Collection",
+    description: "Exquisite designs for special occasions.",
+    image: "https://images.unsplash.com/photo-1512646605205-78422b7c7896?auto=format&fit=crop&w=800&h=1000"
   }
 ];
 

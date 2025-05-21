@@ -15,6 +15,7 @@ import {
   Facebook, 
   Twitter 
 } from "lucide-react";
+import { sharedImages } from "../../lib/imageData";
 
 const Contact = () => {
   const sectionRef = useRef(null);
@@ -224,7 +225,7 @@ const Contact = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="relative overflow-hidden rounded-md group cursor-pointer">
                 <img 
-                  src="https://images.unsplash.com/photo-1515816052601-210d5501d471?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400" 
+                  src={sharedImages.contact} 
                   alt="New York Showroom" 
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -237,7 +238,7 @@ const Contact = () => {
               
               <div className="relative overflow-hidden rounded-md group cursor-pointer">
                 <img 
-                  src="https://images.unsplash.com/photo-1535371062513-d841136e6f7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400" 
+                  src={sharedImages.team[0].image} 
                   alt="London Showroom" 
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -250,7 +251,7 @@ const Contact = () => {
               
               <div className="relative overflow-hidden rounded-md group cursor-pointer">
                 <img 
-                  src="https://images.unsplash.com/photo-1637901038343-e08c54862bd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400" 
+                  src={sharedImages.team[1].image} 
                   alt="Tokyo Showroom" 
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -265,11 +266,11 @@ const Contact = () => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .clip-path-slant {
           clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
         }
-      `}</style>
+      `}} />
     </section>
   );
 };

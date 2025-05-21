@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { fashionImages, sharedImages } from "../../lib/imageData";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -20,10 +21,14 @@ const Contact = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   
   return (
-    <section id="contact" ref={sectionRef} className="py-20 md:py-32 bg-[hsl(var(--luxury-cream))]">
-      <div className="container mx-auto px-4">
+    <section id="contact" ref={sectionRef} className="py-20 md:py-32 bg-[hsl(var(--luxury-cream))] relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-96 bg-gradient-to-b from-[hsl(var(--design1-accent))] to-transparent opacity-10 rounded-bl-full"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[hsl(var(--luxury-gold))] opacity-5 rounded-full"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-          <div>
+          <div className="relative">
             <motion.h4 
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -123,9 +128,16 @@ const Contact = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative"
           >
-            <form className="bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-playfair font-bold mb-6">Request an Appointment</h3>
+            {/* Decorative element */}
+            <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full border border-[hsl(var(--luxury-gold))] opacity-30 hidden md:block"></div>
+            
+            <form className="bg-white p-8 rounded-lg shadow-lg relative z-10">
+              <h3 className="text-2xl font-playfair font-bold mb-6 flex items-center">
+                <span className="w-8 h-1 bg-[hsl(var(--design1-accent))] mr-3"></span>
+                Request an Appointment
+              </h3>
               
               <div className="mb-6">
                 <Label htmlFor="name" className="block text-sm uppercase tracking-wide text-gray-700 mb-2">

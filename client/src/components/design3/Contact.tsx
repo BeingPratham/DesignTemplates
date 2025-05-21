@@ -15,6 +15,7 @@ import {
   Twitter, 
   Send 
 } from "lucide-react";
+import { sharedImages } from "../../lib/imageData";
 
 const Contact = () => {
   const sectionRef = useRef(null);
@@ -127,7 +128,7 @@ const Contact = () => {
             
             <div className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1527384028877-7f36d05d1463?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600" 
+                src={sharedImages.contact} 
                 alt="Maison boutique interior" 
                 className="w-full h-full object-cover"
               />

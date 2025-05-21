@@ -42,7 +42,7 @@ function App() {
   return (
     <>
       <CustomCursor />
-      <Navbar />
+      {/* <Navbar /> */}
       
       <main className="min-h-screen">
         <Switch>

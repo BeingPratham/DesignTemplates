@@ -5,6 +5,7 @@ import Showcase from "../components/design2/Showcase";
 import About from "../components/design2/About";
 import Contact from "../components/design2/Contact";
 import { initScrollAnimations, initMouseParallax } from "../lib/animations";
+import Navbar from "@/components/Navbar2";
 
 const Design2 = () => {
   useEffect(() => {
@@ -23,6 +24,7 @@ const Design2 = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      <Navbar/>
       <Hero />
       <Showcase />
       <About />

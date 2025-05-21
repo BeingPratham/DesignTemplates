@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { fashionImages, sharedImages } from "../../lib/imageData";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -184,8 +185,8 @@ const Contact = () => {
                 
                 <div className="mt-8">
                   <img 
-                    src="https://images.unsplash.com/photo-1606292445447-61e67cb26c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400" 
-                    alt="Atelier workspace" 
+                    src={sharedImages.contact} 
+                    alt="Atelier boutique workspace" 
                     className="w-full h-auto rounded-lg"
                   />
                 </div>

@@ -5,6 +5,7 @@ import Showcase from "../components/design1/Showcase";
 import About from "../components/design1/About";
 import Contact from "../components/design1/Contact";
 import { initScrollAnimations, initMouseParallax } from "../lib/animations";
+import Navbar from "@/components/Navbar";
 
 const Design1 = () => {
   useEffect(() => {
@@ -17,12 +18,14 @@ const Design1 = () => {
   }, []);
 
   return (
+    
     <motion.div
       className="design1"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      <Navbar />
       <Hero />
       <Showcase />
       <About />

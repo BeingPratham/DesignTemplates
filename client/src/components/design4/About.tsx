@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ArrowRight } from "lucide-react";
+import { fashionImages } from "../../lib/imageData";
 
 const values = [
   {
@@ -103,8 +104,8 @@ const About = () => {
               <div className="absolute -inset-4 bg-gradient-to-tr from-[hsl(var(--design4-accent))]/20 to-transparent rounded-lg blur-md"></div>
               <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1558454566-d527994acb5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000" 
-                  alt="Creative director at work" 
+                  src={fashionImages.design4.about.image} 
+                  alt="Fashion creative director" 
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--luxury-black))] to-transparent opacity-60"></div>

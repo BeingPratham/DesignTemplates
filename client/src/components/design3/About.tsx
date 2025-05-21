@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Star } from "lucide-react";
+import { fashionImages } from "../../lib/imageData";
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -93,8 +94,8 @@ const About = () => {
               >
                 <div className="aspect-[3/4] overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1530653333484-8e3c8a2b5ea8?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&h=900" 
-                    alt="Craftsman working" 
+                    src={fashionImages.design3.about.image} 
+                    alt="Boutique atelier" 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -113,8 +114,8 @@ const About = () => {
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1621886292650-320c50ce7b27?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600" 
-                      alt="Premium materials" 
+                      src={fashionImages.design3.showcase[0].image} 
+                      alt="Premium fashion materials" 
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -132,8 +133,8 @@ const About = () => {
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1581974944026-5d6ed762f617?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600" 
-                      alt="Design studio" 
+                      src={fashionImages.design3.showcase[1].image} 
+                      alt="Fashion design studio" 
                       className="w-full h-full object-cover"
                     />
                   </div>

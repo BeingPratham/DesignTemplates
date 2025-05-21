@@ -1,6 +1,6 @@
 // import React, { useState, useEffect } from "react";
 // import { motion, AnimatePresence } from "framer-motion";
-// import { Link, useLocation } from "wouter";
+// import { Link } from "wouter";
 // import { useDesign } from "../contexts/DesignContext";
 // import { Menu, X } from "lucide-react";
 
@@ -9,7 +9,6 @@
 //   const [isScrolled, setIsScrolled] = useState(false);
 //   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-//   // Handle scrolling effect on navbar
 //   useEffect(() => {
 //     const handleScroll = () => {
 //       setIsScrolled(window.scrollY > 50);
@@ -19,11 +18,10 @@
 //     return () => window.removeEventListener("scroll", handleScroll);
 //   }, []);
 
-//   // Set design color for indicator dots
 //   const getDesignButtonClass = (num: number) => {
 //     const baseClass = "w-3 h-3 rounded-full transition-opacity duration-300";
 //     const isActive = designNumber === num ? "opacity-100" : "opacity-50";
-    
+
 //     switch (num) {
 //       case 1:
 //         return `${baseClass} ${isActive} bg-[hsl(var(--design1-accent))]`;
@@ -38,12 +36,10 @@
 //     }
 //   };
 
-//   // Toggle mobile menu
 //   const toggleMobileMenu = () => {
 //     setMobileMenuOpen(!mobileMenuOpen);
 //   };
 
-//   // Close mobile menu when changing design
 //   const handleDesignChange = (num: number) => {
 //     setDesignNumber(num);
 //     setMobileMenuOpen(false);
@@ -52,19 +48,21 @@
 //   return (
 //     <motion.nav
 //       className={`fixed w-full z-50 transition-all duration-300 ${
-//         isScrolled ? "bg-white dark:bg-gray-900 shadow-md py-2" : "py-4"
+//         isScrolled
+//           ? "bg-white dark:bg-gray-900 shadow-md py-2"
+//           : "py-4 bg-white dark:bg-gray-900"
 //       }`}
 //       initial={{ y: -100 }}
 //       animate={{ y: 0 }}
 //       transition={{ duration: 0.5, ease: "linear" }}
 //     >
-//       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+//       <div className="container mx-auto px-4 flex justify-between items-center">
 //         <div className="flex items-center">
 //           <div className="brand-logo">
 //             <Link href={`/design${designNumber}`}>
 //               <motion.span
 //                 key={brandName}
-//                 className="text-2xl font-playfair font-bold tracking-tight cursor-pointer"
+//                 className="text-2xl font-playfair font-bold tracking-tight cursor-pointer text-orange-600 dark:text-orange-400"
 //                 initial={{ opacity: 0, y: 10 }}
 //                 animate={{ opacity: 1, y: 0 }}
 //                 exit={{ opacity: 0, y: 0 }}
@@ -75,50 +73,47 @@
 //             </Link>
 //           </div>
 //         </div>
-        
+
 //         {/* Desktop Navigation */}
 //         <div className="hidden md:flex space-x-10 items-center">
-//           <a href="#home" className="nav-item text-sm uppercase tracking-widest font-medium hover:text-[hsl(var(--luxury-gold))] transition-colors">Home</a>
-//           <a href="#showcase" className="nav-item text-sm uppercase tracking-widest font-medium hover:text-[hsl(var(--luxury-gold))] transition-colors">Collections</a>
-//           <a href="#about" className="nav-item text-sm uppercase tracking-widest font-medium hover:text-[hsl(var(--luxury-gold))] transition-colors">About</a>
-//           <a href="#contact" className="nav-item text-sm uppercase tracking-widest font-medium hover:text-[hsl(var(--luxury-gold))] transition-colors">Contact</a>
+//           {["Home", "Collections", "About", "Contact"].map((label) => (
+//             <a
+//               key={label}
+//               href={`#${label.toLowerCase()}`}
+//               className="nav-item text-sm uppercase tracking-widest font-medium text-orange-600 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 transition-colors"
+//             >
+//               {label}
+//             </a>
+//           ))}
 //         </div>
-        
+
 //         <div className="hidden md:flex items-center space-x-6">
 //           <div className="design-selector flex space-x-3">
-//             <button 
-//               onClick={() => handleDesignChange(1)} 
-//               className={getDesignButtonClass(1)}
-//               aria-label="Design 1"
-//             />
-//             <button 
-//               onClick={() => handleDesignChange(2)} 
-//               className={getDesignButtonClass(2)}
-//               aria-label="Design 2"
-//             />
-//             <button 
-//               onClick={() => handleDesignChange(3)} 
-//               className={getDesignButtonClass(3)}
-//               aria-label="Design 3"
-//             />
-//             <button 
-//               onClick={() => handleDesignChange(4)} 
-//               className={getDesignButtonClass(4)}
-//               aria-label="Design 4"
-//             />
+//             {[1, 2, 3, 4].map((num) => (
+//               <button
+//                 key={num}
+//                 onClick={() => handleDesignChange(num)}
+//                 className={getDesignButtonClass(num)}
+//                 aria-label={`Design ${num}`}
+//               />
+//             ))}
 //           </div>
 //         </div>
-        
+
 //         {/* Mobile menu button */}
-//         <button 
-//           className="md:hidden focus:outline-none" 
+//         <button
+//           className="md:hidden focus:outline-none text-orange-600 dark:text-orange-400"
 //           onClick={toggleMobileMenu}
 //           aria-label="Toggle mobile menu"
 //         >
-//           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+//           {mobileMenuOpen ? (
+//             <X className="w-6 h-6" />
+//           ) : (
+//             <Menu className="w-6 h-6" />
+//           )}
 //         </button>
 //       </div>
-      
+
 //       {/* Mobile Navigation */}
 //       <AnimatePresence>
 //         {mobileMenuOpen && (
@@ -130,56 +125,26 @@
 //             transition={{ duration: 0.3 }}
 //           >
 //             <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-//               <a 
-//                 href="#home" 
-//                 className="py-2 text-sm uppercase tracking-widest font-medium hover:text-[hsl(var(--luxury-gold))] transition-colors"
-//                 onClick={() => setMobileMenuOpen(false)}
-//               >
-//                 Home
-//               </a>
-//               <a 
-//                 href="#showcase" 
-//                 className="py-2 text-sm uppercase tracking-widest font-medium hover:text-[hsl(var(--luxury-gold))] transition-colors"
-//                 onClick={() => setMobileMenuOpen(false)}
-//               >
-//                 Collections
-//               </a>
-//               <a 
-//                 href="#about" 
-//                 className="py-2 text-sm uppercase tracking-widest font-medium hover:text-[hsl(var(--luxury-gold))] transition-colors"
-//                 onClick={() => setMobileMenuOpen(false)}
-//               >
-//                 About
-//               </a>
-//               <a 
-//                 href="#contact" 
-//                 className="py-2 text-sm uppercase tracking-widest font-medium hover:text-[hsl(var(--luxury-gold))] transition-colors"
-//                 onClick={() => setMobileMenuOpen(false)}
-//               >
-//                 Contact
-//               </a>
-              
+//               {["Home", "Collections", "About", "Contact"].map((label) => (
+//                 <a
+//                   key={label}
+//                   href={`#${label.toLowerCase()}`}
+//                   className="py-2 text-sm uppercase tracking-widest font-medium text-orange-600 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 transition-colors"
+//                   onClick={() => setMobileMenuOpen(false)}
+//                 >
+//                   {label}
+//                 </a>
+//               ))}
+
 //               <div className="design-selector flex space-x-4 py-4">
-//                 <button 
-//                   onClick={() => handleDesignChange(1)} 
-//                   className={getDesignButtonClass(1)}
-//                   aria-label="Design 1"
-//                 />
-//                 <button 
-//                   onClick={() => handleDesignChange(2)} 
-//                   className={getDesignButtonClass(2)}
-//                   aria-label="Design 2"
-//                 />
-//                 <button 
-//                   onClick={() => handleDesignChange(3)} 
-//                   className={getDesignButtonClass(3)}
-//                   aria-label="Design 3"
-//                 />
-//                 <button 
-//                   onClick={() => handleDesignChange(4)} 
-//                   className={getDesignButtonClass(4)}
-//                   aria-label="Design 4"
-//                 />
+//                 {[1, 2, 3, 4].map((num) => (
+//                   <button
+//                     key={num}
+//                     onClick={() => handleDesignChange(num)}
+//                     className={getDesignButtonClass(num)}
+//                     aria-label={`Design ${num}`}
+//                   />
+//                 ))}
 //               </div>
 //             </div>
 //           </motion.div>
@@ -191,6 +156,7 @@
 
 // export default Navbar;
 
+
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
@@ -199,21 +165,21 @@ import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const { designNumber, setDesignNumber, brandName } = useDesign();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleDesignChange = (num: number) => {
+    setDesignNumber(num);
+    setMobileMenuOpen(false);
+  };
 
   const getDesignButtonClass = (num: number) => {
-    const baseClass = "w-3 h-3 rounded-full transition-opacity duration-300 border border-white";
+    const baseClass = "w-3 h-3 rounded-full transition-opacity duration-300";
     const isActive = designNumber === num ? "opacity-100" : "opacity-50";
-    
+
     switch (num) {
       case 1:
         return `${baseClass} ${isActive} bg-[hsl(var(--design1-accent))]`;
@@ -228,32 +194,20 @@ const Navbar = () => {
     }
   };
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
-  const handleDesignChange = (num: number) => {
-    setDesignNumber(num);
-    setMobileMenuOpen(false);
-  };
-
   return (
     <motion.nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-transparent py-3" : "bg-transparent py-6"
-      }`}
+      className="fixed w-full z-50 py-4"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "linear" }}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
+        {/* Brand */}
         <div className="flex items-center">
           <Link href={`/design${designNumber}`}>
             <motion.span
               key={brandName}
-              className={`text-2xl font-playfair font-bold tracking-tight cursor-pointer select-none ${
-                isScrolled ? "text-white" : "text-white"
-              }`}
+              className="text-2xl font-playfair font-bold tracking-tight cursor-pointer text-orange-600 dark:text-orange-400"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 0 }}
@@ -264,22 +218,20 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex space-x-10 items-center">
-          {["home", "showcase", "about", "contact"].map((section) => (
+          {["Home", "Collections", "About", "Contact"].map((label) => (
             <a
-              key={section}
-              href={`#${section}`}
-              className={`nav-item text-sm uppercase tracking-widest font-medium transition-colors cursor-pointer ${
-                isScrolled ? "text-white hover:text-[hsl(var(--luxury-gold))]" : "text-white hover:text-[hsl(var(--luxury-gold))]"
-              }`}
+              key={label}
+              href={`#${label.toLowerCase()}`}
+              className="nav-item text-sm uppercase tracking-widest font-medium text-orange-600 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 transition-colors"
             >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
+              {label}
             </a>
           ))}
         </div>
 
-        {/* Design Selector */}
+        {/* Design selector desktop */}
         <div className="hidden md:flex items-center space-x-6">
           <div className="design-selector flex space-x-3">
             {[1, 2, 3, 4].map((num) => (
@@ -295,11 +247,15 @@ const Navbar = () => {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden focus:outline-none text-white"
+          className="md:hidden focus:outline-none text-orange-600 dark:text-orange-400"
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </div>
 
@@ -307,23 +263,24 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            className="md:hidden bg-transparent absolute w-full top-full left-0 shadow-none"
+            className="md:hidden absolute w-full"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-              {["home", "showcase", "about", "contact"].map((section) => (
+            <div className="container mx-auto px-4 py-4 flex flex-col space-y-4 bg-transparent">
+              {["Home", "Collections", "About", "Contact"].map((label) => (
                 <a
-                  key={section}
-                  href={`#${section}`}
-                  className="py-2 text-sm uppercase tracking-widest font-medium text-white hover:text-[hsl(var(--luxury-gold))] transition-colors cursor-pointer"
+                  key={label}
+                  href={`#${label.toLowerCase()}`}
+                  className="py-2 text-sm uppercase tracking-widest font-medium text-orange-600 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                  {label}
                 </a>
               ))}
+
               <div className="design-selector flex space-x-4 py-4">
                 {[1, 2, 3, 4].map((num) => (
                   <button

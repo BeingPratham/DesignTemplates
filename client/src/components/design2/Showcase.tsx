@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { fashionImages } from "../../lib/imageData";
 import { 
   ChevronRight, 
   Eye, 
@@ -9,34 +10,38 @@ import {
 
 const categories = ["All", "Apparel", "Accessories", "Footwear", "Home"];
 
+// Get the collection data from our image library
+const collectionItems = fashionImages.design2.showcase;
+
+// Create product data with categories
 const products = [
   {
     id: 1,
-    title: "Handcrafted Leather Bag",
+    title: "Handcrafted Collection",
     price: "$1,250",
-    category: "Accessories",
-    image: "https://images.unsplash.com/photo-1613843433065-819a4c83cf21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    category: "Apparel",
+    image: collectionItems[0].image
   },
   {
     id: 2,
-    title: "Organic Cotton Jacket",
+    title: "Sustainable Series",
     price: "$850",
-    category: "Apparel",
-    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    category: "Accessories",
+    image: collectionItems[1].image
   },
   {
     id: 3,
-    title: "Sustainable Wool Scarf",
-    price: "$380",
-    category: "Accessories",
-    image: "https://images.unsplash.com/photo-1589810635657-232948472d98?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    title: "Limited Editions",
+    price: "$1,680",
+    category: "Apparel",
+    image: collectionItems[2].image
   },
   {
     id: 4,
-    title: "Recycled Silver Bracelet",
+    title: "Recycled Materials Set",
     price: "$620",
     category: "Accessories",
-    image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    image: "https://images.unsplash.com/photo-1550614000-4895a10e1bfd?auto=format&fit=crop&w=800"
   }
 ];
 
@@ -150,6 +155,8 @@ const Showcase = () => {
             className="flex flex-wrap justify-center gap-4 mb-12"
           >
             {categories.map((category, index) => (
+              <Tabs>
+                <TabsList>
               <TabsTrigger
                 key={category}
                 value={category}
@@ -162,6 +169,8 @@ const Showcase = () => {
               >
                 {category}
               </TabsTrigger>
+              </TabsList>
+              </Tabs>
             ))}
           </motion.div>
         </div>

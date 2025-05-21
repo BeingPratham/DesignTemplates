@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+import { fashionImages } from "../../lib/imageData";
 import { 
   Leaf, 
   Award, 
@@ -71,8 +72,8 @@ const About = () => {
             <div className="relative rounded-lg overflow-hidden shadow-xl">
               <div className="aspect-w-4 aspect-h-5">
                 <img 
-                  src="https://images.unsplash.com/photo-1541348263662-e068662d82af?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000" 
-                  alt="Artisan craftsmanship" 
+                  src={fashionImages.design2.about.image} 
+                  alt="Artisan fashion designer at work" 
                   className="w-full h-full object-cover"
                 />
               </div>

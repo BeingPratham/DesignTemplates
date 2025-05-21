@@ -2,37 +2,41 @@ import React, { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowRight, ArrowUpRight, Plus } from "lucide-react";
+import { fashionImages } from "../../lib/imageData";
 
 const categories = ["All", "Limited Edition", "Seasonal", "Bespoke"];
+
+// Use fashion images from our data
+const showcaseItems = fashionImages.design4.showcase;
 
 const products = [
   {
     id: 1,
-    title: "Celestial Collection",
-    description: "Avant-garde designs inspired by cosmic phenomena.",
+    title: "Avant-Garde Series",
+    description: "Boundary-pushing designs for the fashion forward.",
     category: "Limited Edition",
-    image: "https://images.unsplash.com/photo-1594969155368-f19235a826fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    image: showcaseItems[0].image
   },
   {
     id: 2,
-    title: "Neo Baroque",
-    description: "Reimagining classical elements through a contemporary lens.",
+    title: "Statement Pieces",
+    description: "Bold silhouettes that command attention.",
     category: "Seasonal",
-    image: "https://images.unsplash.com/photo-1615312414738-aa6508144ca2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    image: showcaseItems[1].image
   },
   {
     id: 3,
-    title: "Metamorphosis",
-    description: "Transformative pieces that evolve with wear and time.",
+    title: "Couture Collection",
+    description: "Exquisite pieces handcrafted with meticulous detail.",
     category: "Limited Edition",
-    image: "https://images.unsplash.com/photo-1595951960408-a7259a6d8d00?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    image: showcaseItems[2].image
   },
   {
     id: 4,
-    title: "Architect's Dream",
+    title: "Architect's Vision",
     description: "Structural silhouettes inspired by iconic architectural marvels.",
     category: "Bespoke",
-    image: "https://images.unsplash.com/photo-1542389087-4a2c86941c83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=1000"
+    image: "https://images.unsplash.com/photo-1512646605205-78422b7c7896?auto=format&fit=crop&w=800&h=1000"
   }
 ];
 
